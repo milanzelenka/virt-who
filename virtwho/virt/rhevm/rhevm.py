@@ -161,7 +161,7 @@ class RhevM(virt.Virt):
         """
         response = self.get(url)
         try:
-            return ElementTree.fromstring(response)
+            return ElementTree.fromstring(response.encode('utf-8'))
         except Exception as e:
             self.logger.debug("Invalid xml file: %s" % response)
             raise virt.VirtError("Invalid XML file returned from RHEV-M: %s" % str(e))
